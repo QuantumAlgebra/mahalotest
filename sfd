@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Comment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .image-container {
+            margin-bottom: 40px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .comment-section {
+            margin-top: 10px;
+        }
+        .comment {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Image and Comment Section</h1>
+
+    <div class="image-container">
+        <h2>Image 1</h2>
+        <img src="image1.jpg" alt="Image 1">
+        <div class="comment-section">
+            <h3>Comments:</h3>
+            <div class="comments">
+                <!-- Comments will be appended here -->
+            </div>
+            <input type="text" id="commentInput1" placeholder="Add a comment">
+            <button onclick="addComment('commentInput1', 'comments1')">Submit</button>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <h2>Image 2</h2>
+        <img src="image2.jpg" alt="Image 2">
+        <div class="comment-section">
+            <h3>Comments:</h3>
+            <div class="comments">
+                <!-- Comments will be appended here -->
+            </div>
+            <input type="text" id="commentInput2" placeholder="Add a comment">
+            <button onclick="addComment('commentInput2', 'comments2')">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function addComment(inputId, commentsClass) {
+            var input = document.getElementById(inputId);
+            var commentsDiv = document.querySelector(`.${commentsClass}`);
+            if (input.value.trim() !== '') {
+                var comment = document.createElement('div');
+                comment.classList.add('comment');
+                comment.textContent = input.value;
+                commentsDiv.appendChild(comment);
+                input.value = '';
+            }
+        }
+    </script>
+
+</body>
+</html>
